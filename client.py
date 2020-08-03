@@ -23,6 +23,7 @@ clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.connect((serverName, serverPort))
 #Before the client can send data to the server (or vice versa) using a TCP socket, a TCP connection must first be established between the client and server. The above line initiates the TCP connection between the client and server. The parameter of the connect( ) method is the address of the server side of the connection. After this line of code is executed, the three-way handshake is performed and a TCP connection is established between the client and server.
 p2pSocket = socket(AF_INET, SOCK_DGRAM)
+p2pSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 p2pSocket.bind((udpIP, udpPort)) 
 
 def remove_expired_beacons():
